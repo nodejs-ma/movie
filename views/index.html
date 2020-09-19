@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>自己的电影站</title>
+	<style type="text/css">
+		li {
+			float: left;
+			list-style-type: none;
+			margin: 5px;
+		}
+		img {
+			width: 150px;
+			height: auto;
+		}
+	</style>
+</head>
+<body>
+	<h1>自己的电影站</h1>
+	<h2>测试数据为优酷首页推荐电影-动态抓取-刷新页面电影会变更</h2>
+	<ul id="uuu"></ul>
+
+	<script type="text/javascript">
+		var xhr = new XMLHttpRequest();
+		xhr.open('get', '/youku', true);    //true为异步
+		xhr.responseType = 'json';       //接收到的数据格式
+		xhr.onerror = function() {
+			alert('请求失败' + xhr.status);
+		} 
+		xhr.onload = function() {
+			if((xhr.status >= 200 && xhr.status < 300) || xhr.status == 304) {
+				// alert(xhr.response[0].pic_img); 
+				var uuu = document.getElementById('uuu');
+				for(i=0; i<=xhr.response.length; i++) {
+					var li = document.createElement('li');
+
+					li.innerHTML = '<a href="/play?url=' + xhr.response[i].pic_href + '" target="_blank"> <img src="' + xhr.response[i].pic_img + '"> </a>';
+					
+
+
+					uuu.appendChild(li);
+
+				}
+			}
+		}
+		xhr.send(null);
+	</script>
+</body>
+</html>

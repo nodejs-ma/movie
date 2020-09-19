@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		body {
+			text-align: center;
+		}
+		#box {
+			display: grid;
+			grid-template-columns: 1fr 4fr 1fr;
+			grid-gap: 10px;
+		}
+		#play {
+			background: #ccc;
+			padding: 5px;
+			border: 1px solid #FF6699;
+			box-shadow: 2px 5px 5px #FF6699;
+		}
+	</style>
+</head>
+<body>
+	<h1>我要开始播放啦</h1>
+	<div id="box">
+		<div>我是广告</div>
+		<div id="play">
+			<iframe src="http://jx.598110.com/index.php?url=<%= url %>" width="100%" height="420" frameborder=0></iframe>
+		</div>
+		<div>我是广告</div>
+	</div>
+</body>
+</html>
